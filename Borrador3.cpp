@@ -29,23 +29,41 @@ void sopadeletras(int dificultad)
 }
 
 void sopadeletras (int dificultad)
+{
+    char sopamedio[10][10] =
+    {
+        {'P','R','O','C','E','S','A','D','O','R'}
+        {'P','L','A','C','A','B','A','S','E','E'}
+        {'M','E','M','O','R','I','A','R','A','M'}
+        {'D','I','S','C','O','D','U','R','O','N'}
+        {'T','A','R','J','E','T','A','G','R','A'}
+        {'T','E','C','L','A','D','O','R','R','A'}
+        {'R','A','N','U','R','A','G','R','A','F'}
+        {'M','O','N','I','T','O','R','S','S','D'}
+        {'C','O','N','E','X','I','O','N','E','S'}
+        {'F','U','E','N','T','E','D','E','P','O'}
+    };
+}
+void sopadeletras (int dificultad)
 
 
 
 
 void mostrar_usuarios(const string usuarios[num_usuarios]) 
 {
-    cout << "Nombres de los usuarios registrados:" << endl;
+    cout << "Nombres de los usuarios registrados:";
     for (int i = 0; i < num_usuarios; ++i) 
     {
-        cout << i + 1 << ". " << usuarios[i] << endl;
+        cout << i + 1 << ". " << usuarios[i];
     }
 }
 
 int main() {
     string usuarios[num_usuarios];
     int menu;
+    int dificultad;
     char sopafacil[8][8];
+    char sopamedio[10][10];
 
     while (true) 
     {
@@ -71,48 +89,19 @@ int main() {
             }
             case 3:
             {
-                int dificultad;
-                cout << "Las dificultades son:\n";
+                cout << "Escoja dificultad: \n";
                 cout << "1) Facil\n";
                 cout << "2) Intermedio\n";
                 cout << "3) Dificil\n";
                 cout << "4) Salir\n";
                 cout << "Elige una dificultad: ";
                 cin >> dificultad;
-
-                switch(dificultad)
-                {
-                    case 1:
-                    {
-
-                    }
-
-                    case 2:
-                    {
-
-                    }
-
-                    case 3:
-                    {
-
-                    }
-
-                    case 4:
-                    {
-                        cout << "Saliendo...";
-                        return 0;
-                    }
-                    default:
-                    {
-                        cout << "Esa opcion no existe";
-                    }
-
-                }
-                break;
+                
+                void sopadeletras(int dificultad);
             }
             case 4:
             {
-                cout << "Saliendo del programa" << endl;
+                cout << "Saliendo del programa...";
                 return 0;
             }
             default:
