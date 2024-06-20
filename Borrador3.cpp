@@ -15,39 +15,41 @@ void usuario_guardado(string usuarios[num_usuarios])
 
 void sopadeletras(int dificultad)
 {
-    char sopafacil[8][8] = 
-    { 
-        {'S', 'U', 'P', 'E', 'R', 'M', 'A', 'N'},
-        {'B', 'A', 'T', 'M', 'A', 'N', 'G', 'R'},
-        {'E', 'W', 'O', 'N', 'D', 'E', 'R', 'W'},
-        {'O', 'M', 'F', 'L', 'A', 'S', 'H', 'I'},
-        {'R', 'O', 'N', 'S', 'P', 'I', 'D', 'E'},
-        {'R', 'M', 'A', 'N', 'H', 'U', 'L', 'K'},
-        {'T', 'H', 'O', 'R', 'C', 'A', 'P', 'T'},
-        {'A', 'I', 'N', 'A', 'M', 'G', 'R', 'E'}
-    };
-}
-
-void sopadeletras (int dificultad)
-{
-    char sopamedio[10][10] =
+    if(dificultad == 1)
     {
-        {'P','R','O','C','E','S','A','D','O','R'}
-        {'P','L','A','C','A','B','A','S','E','E'}
-        {'M','E','M','O','R','I','A','R','A','M'}
-        {'D','I','S','C','O','D','U','R','O','N'}
-        {'T','A','R','J','E','T','A','G','R','A'}
-        {'T','E','C','L','A','D','O','R','R','A'}
-        {'R','A','N','U','R','A','G','R','A','F'}
-        {'M','O','N','I','T','O','R','S','S','D'}
-        {'C','O','N','E','X','I','O','N','E','S'}
-        {'F','U','E','N','T','E','D','E','P','O'}
-    };
+        char sopafacil[8][8] = 
+        { 
+         {'S', 'U', 'P', 'E', 'R', 'M', 'A', 'N'},
+         {'B', 'A', 'T', 'M', 'A', 'N', 'G', 'R'},
+         {'E', 'W', 'O', 'N', 'D', 'E', 'R', 'W'},
+         {'O', 'M', 'F', 'L', 'A', 'S', 'H', 'I'},
+         {'R', 'O', 'N', 'S', 'P', 'I', 'D', 'E'},
+         {'R', 'M', 'A', 'N', 'H', 'U', 'L', 'K'},
+         {'T', 'H', 'O', 'R', 'C', 'A', 'P', 'T'},
+         {'A', 'I', 'N', 'A', 'M', 'G', 'R', 'E'}
+        };
+    }
+    else if(dificultad == 2)
+    {
+        char sopamedio[10][10] =
+        {
+            {'P','R','O','C','E','S','A','D','O','R'},
+            {'P','L','A','C','A','B','A','S','E','E'},
+            {'M','E','M','O','R','I','A','R','A','M'},
+            {'D','I','S','C','O','D','U','R','O','N'},
+            {'T','A','R','J','E','T','A','G','R','A'},
+            {'T','E','C','L','A','D','O','R','R','A'},
+            {'R','A','N','U','R','A','G','R','A','F'},
+            {'M','O','N','I','T','O','R','S','S','D'},
+            {'C','O','N','E','X','I','O','N','E','S'},
+            {'F','U','E','N','T','E','D','E','P','O'},
+        };
+    }
+    else
+    {
+
+    }
 }
-void sopadeletras (int dificultad)
-
-
-
 
 void mostrar_usuarios(const string usuarios[num_usuarios]) 
 {
@@ -97,7 +99,7 @@ int main() {
                 cout << "Elige una dificultad: ";
                 cin >> dificultad;
                 
-                void sopadeletras(int dificultad);
+                cout << sopadeletras(int dificultad);
             }
             case 4:
             {
