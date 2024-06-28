@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <ctime>
+#include <unistd.h>
 using namespace std;
 
-const int num_usuarios = 3;
+const int num_usuarios = 2;
+
 
 struct Usuario 
 {
@@ -138,22 +139,60 @@ void sopadeletras(int dificultad, int& puntos)
     cout << "Ingrese la palabra encontrada (o 'salir' para terminar): ";
     while (true) 
     {
-        cin >> palabra;
-        if (palabra == "salir") 
+        if (dificultad == 1)
         {
-            break;
-        }
+            cin >> palabra;
+            if (palabra == "salir") 
+            {
+                break;
+            }
 
-        if (buscar_palabra(*palabras, palabra)) 
-        {
-            cout << "Palabra correcta. Usted tiene +10 puntos " << endl;
-            puntos += 10; 
-        } 
-        else 
-        {
+            if (buscar_palabra(*palabras, palabra)) 
+            {
+            cout << "Palabra correcta. Usted tiene +2 puntos " << endl;
+            puntos += 2; 
+            } 
+            else 
+            {
             cout << "Palabra incorrecta." << endl;
+            }
         }
+        else if (dificultad == 2)
+        {
+            cin >> palabra;
+            if (palabra == "salir") 
+            {
+                break;
+            }
 
+            if (buscar_palabra(*palabras, palabra)) 
+            {
+            cout << "Palabra correcta. Usted tiene +4 puntos " << endl;
+            puntos += 4; 
+            } 
+            else 
+            {
+            cout << "Palabra incorrecta." << endl;
+            }
+        }
+        else if (dificultad == 3)
+        {
+            cin >> palabra;
+            if (palabra == "salir") 
+            {
+                break;
+            }
+
+            if (buscar_palabra(*palabras, palabra)) 
+            {
+            cout << "Palabra correcta. Usted tiene +8 puntos " << endl;
+            puntos += 8; 
+            } 
+            else 
+            {
+            cout << "Palabra incorrecta." << endl;
+            }
+        }
         cout << "Puntos actuales: " << puntos << endl;
         cout << "Ingrese otra palabra encontrada (o 'salir' para terminar): ";
     }
@@ -171,6 +210,26 @@ void actualizar_puntos(Usuario usuarios[num_usuarios], const string& nombre, int
     }
 }
 
+void instrucciones()
+{
+    cout<<"La sopa de letras es un juego que consta de una serie de palabras desordenadas,en la que el jugador tiene encontrar o descifrar las palabras escondidas en la sopa de letras.\n";
+sleep(4);
+cout<<"Las indicaciones son las siguientes:\n";
+sleep(4);
+cout<<"1-El juego es individual, cada persona tiene su perfil.\n";
+sleep(4);
+cout<<"2-Deberas encontrar una serie de palabras dispersas en la sopa de letras.\n";
+sleep(4);
+cout<<"3-Entre mas palabras encuentre el jugador mayor sera su puntaje.\n";   
+sleep(4);
+cout<<"4-En le perfil de cada jugador se irá guardando los puntos que recolecte.\n";
+sleep(4);
+cout<<"5-Al final del juego se podra ver que jugador consigió mayor puntaje, en el apartado de Ranking en el menu principal.\n";
+sleep(4);
+cout<<"Las palabras que vayas encontrando debes escibirlas sin espacios y el mayusculas\n";
+sleep(10);
+}
+
 int main() 
 {
     Usuario usuarios[num_usuarios];
@@ -185,7 +244,9 @@ int main()
         cout << "1) Registro\n";
         cout << "2) Ranking\n";
         cout << "3) Jugar\n";
-        cout << "4) Salir\n";
+        cout << "4) Instrucciones\n";
+        cout << "5) Nombres\n";
+        cout << "6) Salir\n";
         cout << "Elige una opcion: ";
         cin >> menu;
 
@@ -198,6 +259,7 @@ int main()
                 mostrar_usuarios(usuarios);
                 break;
             case 3:
+                cout << "Ingrese la cantidad de usuarios: ";
                 cout << "Ingrese su nombre de usuario: ";
                 cin >> nombre_usuario;
                 cout << "Escoja dificultad: \n";
@@ -210,6 +272,11 @@ int main()
                 actualizar_puntos(usuarios, nombre_usuario, puntos);
                 break;
             case 4:
+                instrucciones();
+                break;
+            case 5:
+                cout << "Aca van los nombres";
+            case 6:
                 cout << "Saliendo del programa..." << endl;
                 return 0;
             default:

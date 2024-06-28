@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <ctime>
+#include <unistd.h>
 using namespace std;
 
-const int num_usuarios = 3;
+const int max_usuarios = 5;
 
 struct Usuario 
 {
@@ -12,7 +11,7 @@ struct Usuario
     int puntos;
 };
 
-void usuario_guardado(Usuario usuarios[num_usuarios]) 
+void usuario_guardado(Usuario usuarios[], int num_usuarios) 
 {
     for (int i = 0; i < num_usuarios; ++i) 
     {
@@ -22,7 +21,7 @@ void usuario_guardado(Usuario usuarios[num_usuarios])
     }
 }
 
-void mostrar_usuarios(const Usuario usuarios[num_usuarios]) 
+void mostrar_usuarios(const Usuario usuarios[], int num_usuarios) 
 {
     cout << "Nombres de los usuarios registrados:\n";
     for (int i = 0; i < num_usuarios; ++i) 
@@ -31,11 +30,11 @@ void mostrar_usuarios(const Usuario usuarios[num_usuarios])
     }
 }
 
-int buscar_palabra(const vector<string>& palabras, const string& palabra) 
+int buscar_palabra(const string palabras[], int num_palabras, const string& palabra) 
 {
-    for (const auto& p : palabras) 
+    for (int i = 0; i < num_palabras; ++i) 
     {
-        if (p == palabra) 
+        if (palabras[i] == palabra) 
         {
             return 1; 
         }
@@ -45,14 +44,17 @@ int buscar_palabra(const vector<string>& palabras, const string& palabra)
 
 void sopadeletras(int dificultad, int& puntos) 
 {
-    vector<string> palabras_facil = {"SUPERMAN", "BATMAN", "WONDERWOMAN", "FLASH", "SPIDERMAN", "HULK", "THOR", "CAPTAINAMERICA"};
-    vector<string> palabras_medio = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "DISCODURO", "TARJETAGRAFICA", "TECLADO", "RANURAGRAFICA", "MONITOR", "CONEXIONES", "FUENTEDEPOWER"};
-    vector<string> palabras_dificil = {"GAMEOFTHRONES", "DRAGON", "KNIGHT", "CASTLE", "BATTLE"};
+    string palabras_facil[] = {"SUPERMAN", "BATMAN", "WONDERWOMAN", "FLASH", "SPIDERMAN", "HULK", "THOR", "CAPTAINAMERICA"};
+    string palabras_medio[] = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "DISCODURO", "TARJETAGRAFICA", "TECLADO", "RANURAGRAFICA", "MONITOR", "CONEXIONES", "FUENTEDEPOWER"};
+    string palabras_dificil[] = {"GAMEOFTHRONES", "DRAGON", "KNIGHT", "CASTLE", "BATTLE"};
 
-    vector<string>* palabras;
+    const string* palabras;
+    int num_palabras;
+    
     if (dificultad == 1) 
     {
-        palabras = &palabras_facil;
+        palabras = palabras_facil;
+        num_palabras = 8;
         char sopafacil[8][8] = 
         {
             {'S', 'U', 'P', 'E', 'R', 'M', 'A', 'N'},
@@ -76,7 +78,8 @@ void sopadeletras(int dificultad, int& puntos)
     } 
     else if (dificultad == 2) 
     {
-        palabras = &palabras_medio;
+        palabras = palabras_medio;
+        num_palabras = 10;
         char sopamedio[10][10] = 
         {
             {'P','R','O','C','E','S','A','D','O','R'},
@@ -102,7 +105,8 @@ void sopadeletras(int dificultad, int& puntos)
     }
     else if (dificultad == 3) 
     {
-        palabras = &palabras_dificil;
+        palabras = palabras_dificil;
+        num_palabras = 5;
         char sopadificil[12][12] =
         {
             {'R', 'B', 'T', 'Q', 'S', 'P', 'J', 'Z', 'W', 'R', 'W', 'G'},
@@ -144,10 +148,15 @@ void sopadeletras(int dificultad, int& puntos)
             break;
         }
 
-        if (buscar_palabra(*palabras, palabra)) 
+        if (buscar_palabra(palabras, num_palabras, palabra)) 
         {
-            cout << "Palabra correcta. Usted tiene +10 puntos " << endl;
-            puntos += 10; 
+            if (dificultad == 1)
+                puntos += 2;
+            else if (dificultad == 2)
+                puntos += 4;
+            else if (dificultad == 3)
+                puntos += 8;
+            cout << "Palabra correcta. Usted tiene " << puntos << " puntos.\n";
         } 
         else 
         {
@@ -159,7 +168,7 @@ void sopadeletras(int dificultad, int& puntos)
     }
 }
 
-void actualizar_puntos(Usuario usuarios[num_usuarios], const string& nombre, int puntos)
+void actualizar_puntos(Usuario usuarios[], int num_usuarios, const string& nombre, int puntos)
 {
     for (int i = 0; i < num_usuarios; ++i) 
     {
@@ -171,12 +180,32 @@ void actualizar_puntos(Usuario usuarios[num_usuarios], const string& nombre, int
     }
 }
 
+void instrucciones()
+{
+    cout << "La sopa de letras es un juego que consta de una serie de palabras desordenadas, en la que el jugador tiene encontrar o descifrar las palabras escondidas en la sopa de letras.\n";
+    sleep(4);
+    cout << "Las indicaciones son las siguientes:\n";
+    sleep(4);
+    cout << "1- El juego es individual, cada persona tiene su perfil.\n";
+    sleep(4);
+    cout << "2- Deberas encontrar una serie de palabras dispersas en la sopa de letras.\n";
+    sleep(4);
+    cout << "3- Entre más palabras encuentre el jugador mayor sera su puntaje.\n";   
+    sleep(4);
+    cout << "4- En le perfil de cada jugador se irá guardando los puntos que recolecte.\n";
+    sleep(4);
+    cout << "5- Al final del juego se podrá ver qué jugador consiguió mayor puntaje, en el apartado de Ranking en el menú principal.\n";
+    sleep(4);
+    cout << "Las palabras que vayas encontrando debes escribirlas sin espacios y en mayúsculas\n";
+    sleep(10);
+}
+
 int main() 
 {
-    Usuario usuarios[num_usuarios];
+    Usuario usuarios[max_usuarios];
+    int num_usuarios = 0;
     int menu;
     int dificultad;
-    int puntos = 0;
     string nombre_usuario;
 
     while (true) 
@@ -185,19 +214,31 @@ int main()
         cout << "1) Registro\n";
         cout << "2) Ranking\n";
         cout << "3) Jugar\n";
-        cout << "4) Salir\n";
+        cout << "4) Instrucciones\n";
+        cout << "5) Salir\n";
         cout << "Elige una opcion: ";
         cin >> menu;
 
         switch (menu) 
         {
             case 1:
-                usuario_guardado(usuarios);
+            {
+                cout << "Ingrese la cantidad de usuarios: ";
+                cin >> num_usuarios;
+                if (num_usuarios > max_usuarios) {
+                    cout << "Número de usuarios excede el máximo permitido.\n";
+                    num_usuarios = max_usuarios;
+                }
+                usuario_guardado(usuarios, num_usuarios);
                 break;
+            }
             case 2:
-                mostrar_usuarios(usuarios);
+            {
+                mostrar_usuarios(usuarios, num_usuarios);
                 break;
+            }
             case 3:
+            {
                 cout << "Ingrese su nombre de usuario: ";
                 cin >> nombre_usuario;
                 cout << "Escoja dificultad: \n";
@@ -206,15 +247,27 @@ int main()
                 cout << "3) Dificil\n";
                 cout << "Elige una dificultad: ";
                 cin >> dificultad;
+
+                int puntos = 0;
                 sopadeletras(dificultad, puntos);
-                actualizar_puntos(usuarios, nombre_usuario, puntos);
+                actualizar_puntos(usuarios, num_usuarios, nombre_usuario, puntos);
                 break;
+            }
             case 4:
+            {
+                instrucciones();
+                break;
+            }
+            case 5:
+            {
                 cout << "Saliendo del programa..." << endl;
                 return 0;
+            }
             default:
-                cout << "Esa no es una opcion" << endl;
+            {
+                cout << "Esa no es una opción válida." << endl;
                 break;
+            }
         }
     }
     return 0;
