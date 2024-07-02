@@ -5,7 +5,7 @@
 using namespace std;
 
 const int max_usuarios = 5;
-
+ 
 struct Usuario 
 {
     string nombre;
@@ -212,9 +212,9 @@ void instrucciones()
     sleep(4);
     cout << "2- Deberas encontrar una serie de palabras dispersas en la sopa de letras.\n";
     sleep(4);
-    cout << "3- Entre mas palabras encuentre el jugador mayor sera su puntaje.\n";   
+    cout << "3- Entre mas palabras encuentre el jugador mayor sera su puntaje (Son 6 palabras en total por plantilla).\n";   
     sleep(4);
-    cout << "4- En le perfil de cada jugador se ira guardando los puntos que recolecte.\n";
+    cout << "4- En el perfil de cada jugador se ira guardando los puntos que recolecte.\n";
     sleep(4);
     cout << "5- Al final del juego se podra ver que jugador consiguio mayor puntaje, en el apartado de Ranking en el menu principal.\n";
     sleep(4);
@@ -250,7 +250,7 @@ int main()
                 cin >> num_usuarios;
                 if (num_usuarios > max_usuarios) 
                 {
-                    cout << "Numero de usuarios excede el máximo permitido.\n";
+                    cout << "Numero de usuarios excede el maximo permitido.\n";
                     num_usuarios = max_usuarios;
                 }
                 usuario_guardado(usuarios, num_usuarios);
@@ -285,7 +285,7 @@ int main()
             }
             case 5:
             {
-                cout << "Echo por:\n";
+                cout << "Hecho por:\n";
                 cout << "Anderson Farid Galvez Maldonado - 00042424\n";
                 cout << "Marco Sebastian Molina Tobar - 00147624 \n";
                 cout << "Gerardo Cornejo Orellana - 00043524\n";
@@ -298,7 +298,7 @@ int main()
             }
             default:
             {
-                cout << "Esa no es una opción válida.";
+                cout << "Esa no es una opcion valida.";
                 break;
             }
         }
