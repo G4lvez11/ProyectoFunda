@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <cstdint>
 using namespace std;
 
 const int max_usuarios = 5;
@@ -50,7 +51,7 @@ void mostrar_ganador(const Usuario usuarios[], int num_usuarios)
         }
     }
 
-    cout << "El ganador de esta ronda es: " << ganador << " con " << mayor << " puntos";
+    cout << "El ganador de esta ronda es: " << ganador << " con " << mayor << " puntos\n";
 }
 
 int buscar_palabra(const string palabras[], int num_palabras, const string& palabra) 
@@ -67,9 +68,9 @@ int buscar_palabra(const string palabras[], int num_palabras, const string& pala
 
 void sopadeletras(int dificultad, int& puntos) 
 {
-    string palabras_facil[] = {"SUPERMAN", "BATMAN", "WONDERWOMAN", "FLASH", "SPIDERMAN", "HULK", "THOR", "CAPTAINAMERICA"};
-    string palabras_medio[] = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "DISCODURO", "TARJETAGRAFICA", "TECLADO", "RANURAGRAFICA", "MONITOR", "CONEXIONES", "FUENTEDEPOWER"};
-    string palabras_dificil[] = {"GAMEOFTHRONES", "DRAGON", "KNIGHT", "CASTLE", "BATTLE"};
+    string palabras_facil[] = {"SUPERMAN", "BATMAN", "FLASH", "HULK", "THOR", "LOKI"};
+    string palabras_medio[] = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "TECLADO", "MONITOR","SSD"};
+    string palabras_dificil[] = {"CR7", "MESSI", "NEYMAR", "LEWANDOWSKI", "MBAPPE", "DYBALA"};
 
     const string* palabras;
     int num_palabras;
@@ -77,17 +78,17 @@ void sopadeletras(int dificultad, int& puntos)
     if (dificultad == 1) 
     {
         palabras = palabras_facil;
-        num_palabras = 8;
+        num_palabras = 6;
         char sopafacil[8][8] = 
         {
             {'S', 'U', 'P', 'E', 'R', 'M', 'A', 'N'},
-            {'B', 'A', 'T', 'M', 'A', 'N', 'G', 'R'},
-            {'E', 'W', 'O', 'N', 'D', 'E', 'R', 'W'},
-            {'O', 'M', 'F', 'L', 'A', 'S', 'H', 'I'},
-            {'R', 'O', 'N', 'S', 'P', 'I', 'D', 'E'},
-            {'R', 'M', 'A', 'N', 'H', 'U', 'L', 'K'},
-            {'T', 'H', 'O', 'R', 'C', 'A', 'P', 'T'},
-            {'A', 'I', 'N', 'A', 'M', 'G', 'R', 'E'}
+            {'B', 'J', 'F', 'L', 'A', 'S', 'H', 'R'},
+            {'A', 'E', 'R', 'Q', 'W', 'E', 'U', 'T'},
+            {'T', 'Y', 'L', 'O', 'K', 'I', 'L', 'I'},
+            {'M', 'O', 'P', 'A', 'S', 'D', 'K', 'F'},
+            {'A', 'G', 'H', 'T', 'H', 'O', 'R', 'J'},
+            {'N', 'K', 'Q', 'E', 'G', 'H', 'C', 'V'},
+            {'O', 'H', 'G', 'J', 'P', 'N', 'M', 'B'}
         };
 
         for (int i = 0; i < 8; ++i) 
@@ -102,19 +103,19 @@ void sopadeletras(int dificultad, int& puntos)
     else if (dificultad == 2) 
     {
         palabras = palabras_medio;
-        num_palabras = 10;
+        num_palabras = 6;
         char sopamedio[10][10] = 
         {
-            {'P','R','O','C','E','S','A','D','O','R'},
-            {'P','L','A','C','A','B','A','S','E','E'},
-            {'M','E','M','O','R','I','A','R','A','M'},
-            {'D','I','S','C','O','D','U','R','O','N'},
-            {'T','A','R','J','E','T','A','G','R','A'},
-            {'T','E','C','L','A','D','O','R','R','A'},
-            {'R','A','N','U','R','A','G','R','A','F'},
-            {'M','O','N','I','T','O','R','S','S','D'},
-            {'C','O','N','E','X','I','O','N','E','S'},
-            {'F','U','E','N','T','E','D','E','P','O'}
+            {'P', 'L', 'A', 'C', 'A', 'B', 'A', 'S', 'E', 'P'},
+            {'C', 'B', 'T', 'Q', 'K', 'Z', 'O', 'P', 'F', 'R'},
+            {'V', 'M', 'T', 'E', 'C', 'L', 'A', 'D', 'O', 'O'},
+            {'X', 'O', 'Q', 'S', 'R', 'N', 'Y', 'O', 'E', 'C'},
+            {'R', 'N', 'S', 'S', 'M', 'V', 'H', 'H', 'I', 'E'},
+            {'B', 'I', 'Y', 'D', 'T', 'Q', 'P', 'E', 'S', 'S'},
+            {'N', 'T', 'K', 'X', 'E', 'J', 'W', 'T', 'P', 'A'},
+            {'G', 'O', 'F', 'Q', 'H', 'D', 'V', 'T', 'T', 'D'},
+            {'A', 'R', 'C', 'W', 'N', 'S', 'B', 'R', 'K', 'O'},
+            {'H', 'T', 'E', 'P', 'I', 'A', 'G', 'C', 'X', 'R'}
         };
 
         for (int i = 0; i < 10; ++i) 
@@ -129,21 +130,19 @@ void sopadeletras(int dificultad, int& puntos)
     else if (dificultad == 3) 
     {
         palabras = palabras_dificil;
-        num_palabras = 5;
+        num_palabras = 6;
         char sopadificil[12][12] =
         {
-            {'R', 'B', 'T', 'Q', 'S', 'P', 'J', 'Z', 'W', 'R', 'W', 'G'},
-            {'R', 'N', 'G', 'A', 'M', 'E', 'O', 'F', 'T', 'H', 'R', 'O'},
-            {'S', 'R', 'L', 'A', 'T', 'T', 'U', 'Q', 'K', 'J', 'A', 'P'},
-            {'S', 'N', 'O', 'C', 'R', 'A', 'S', 'P', 'H', 'A', 'Q', 'L'},
-            {'A', 'G', 'O', 'O', 'R', 'K', 'S', 'R', 'N', 'H', 'N', 'E'},
-            {'L', 'D', 'R', 'A', 'K', 'M', 'R', 'T', 'G', 'K', 'E', 'R'},
-            {'E', 'N', 'O', 'S', 'H', 'I', 'E', 'E', 'B', 'O', 'C', 'I'},
-            {'A', 'K', 'G', 'G', 'K', 'L', 'B', 'L', 'I', 'E', 'M', 'N'},
-            {'B', 'L', 'I', 'K', 'E', 'A', 'A', 'H', 'T', 'R', 'F', 'G'},
-            {'M', 'E', 'I', 'N', 'A', 'L', 'F', 'E', 'C', 'A', 'S', 'S'},
-            {'O', 'S', 'N', 'E', 'R', 'F', 'S', 'D', 'H', 'T', 'A', 'O'},
-            {'T', 'N', 'I', 'R', 'L', 'S', 'S', 'K', 'S', 'I', 'T', 'O'}
+            {'M', 'W', 'H', 'G', 'O', 'N', 'E', 'A', 'B', 'S', 'M', 'F'},
+            {'J', 'E', 'R', 'T', 'Z', 'Q', 'V', 'U', 'P', 'X', 'I', 'K'},
+            {'Y', 'S', 'S', 'E', 'N', 'E', 'Y', 'M', 'A', 'R', 'A', 'C'},
+            {'D', 'M', 'V', 'S', 'K', 'H', 'B', 'X', 'J', 'Q', 'G', 'R'},
+            {'Y', 'G', 'Q', 'M', 'I', 'I', 'P', 'P', 'E', 'T', 'W', '7'},
+            {'B', 'Z', 'T', 'B', 'E', 'W', 'C', 'G', 'H', 'A', 'U', 'D'},
+            {'A', 'F', 'L', 'I', 'W', 'A', 'N', 'D', 'O', 'S', 'K', 'I'},
+            {'L', 'M', 'B', 'A', 'P', 'P', 'E', 'D', 'E', 'M', 'S', 'C'},
+            {'A', 'X', 'I', 'J', 'C', 'D', 'A', 'M', 'W', 'F', 'G', 'K'},
+            {'Q', 'S', 'G', 'R', 'O', 'V', 'N', 'P', 'H', 'E', 'U', 'A'}
         };
 
         for (int i = 0; i < 12; ++i) 
@@ -213,13 +212,13 @@ void instrucciones()
     sleep(4);
     cout << "2- Deberas encontrar una serie de palabras dispersas en la sopa de letras.\n";
     sleep(4);
-    cout << "3- Entre más palabras encuentre el jugador mayor sera su puntaje.\n";   
+    cout << "3- Entre mas palabras encuentre el jugador mayor sera su puntaje.\n";   
     sleep(4);
-    cout << "4- En le perfil de cada jugador se irá guardando los puntos que recolecte.\n";
+    cout << "4- En le perfil de cada jugador se ira guardando los puntos que recolecte.\n";
     sleep(4);
-    cout << "5- Al final del juego se podrá ver qué jugador consiguió mayor puntaje, en el apartado de Ranking en el menú principal.\n";
+    cout << "5- Al final del juego se podra ver que jugador consiguio mayor puntaje, en el apartado de Ranking en el menu principal.\n";
     sleep(4);
-    cout << "Las palabras que vayas encontrando debes escribirlas sin espacios y en mayúsculas\n";
+    cout << "Las palabras que vayas encontrando debes escribirlas sin espacios y en mayusculas\n";
     sleep(10);
 }
 
@@ -249,8 +248,9 @@ int main()
             {
                 cout << "Ingrese la cantidad de usuarios: ";
                 cin >> num_usuarios;
-                if (num_usuarios > max_usuarios) {
-                    cout << "Número de usuarios excede el máximo permitido.\n";
+                if (num_usuarios > max_usuarios) 
+                {
+                    cout << "Numero de usuarios excede el máximo permitido.\n";
                     num_usuarios = max_usuarios;
                 }
                 usuario_guardado(usuarios, num_usuarios);
@@ -286,8 +286,8 @@ int main()
             case 5:
             {
                 cout << "Echo por:\n";
-                cout << "Anderson Galvez\n";
-                cout << "Marco\n";
+                cout << "Anderson Farid Galvez Maldonado - 00042424\n";
+                cout << "Marco Sebastian Molina Tobar - 00147624 \n";
                 cout << "Gerardo Cornejo Orellana - 00043524\n";
                 break;
             }
