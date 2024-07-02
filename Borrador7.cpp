@@ -74,6 +74,7 @@ void sopadeletras(int dificultad, int& puntos)
 
     const string* palabras;
     int num_palabras;
+    int mala = 0;
     
     if (dificultad == 1) 
     {
@@ -183,6 +184,13 @@ void sopadeletras(int dificultad, int& puntos)
         else 
         {
             cout << "Palabra incorrecta." << endl;
+            mala++;
+        }
+
+        if(mala > 3)
+        {
+            cout << "Se acabo el juego.\n";
+            break;
         }
 
         cout << "Puntos actuales: " << puntos << endl;
@@ -232,6 +240,7 @@ int main()
 
     while (true) 
     {
+        sleep(2);
         cout << "_____ SOPA DE LETRAS _____ \n";
         cout << "1) Registro\n";
         cout << "2) Ranking\n";
