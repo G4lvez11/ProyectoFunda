@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
-#include <cstdint>
+#include <ctime>
+#include<cstdlib>
 using namespace std;
 
 const int max_usuarios = 5;
@@ -68,7 +69,7 @@ int buscar_palabra(const string palabras[], int num_palabras, const string& pala
 
 void sopafacil(int& puntos)
 {
-	string palabras_facil[] = {"SUPERMAN", "BATMAN", "FLASH", "HULK", "THOR", "LOKI"};
+	string palabras_facil[] = {"SUPERMAN", "BATMAN", "FLASH", "HULK", "THOR", "LOKI", "IRONMAN", "DEADPOOL", "ROBIN", "STORM", "VISION", "FALCON"};
 
 	const string* palabras;
     int num_palabras;
@@ -76,7 +77,7 @@ void sopafacil(int& puntos)
 
 	palabras = palabras_facil;
     num_palabras = 6;
-    char sopafacil[8][8] = 
+    char sopafacil1[8][8] = 
     {
         {'S', 'U', 'P', 'E', 'R', 'M', 'A', 'N'},
         {'B', 'J', 'F', 'L', 'A', 'S', 'H', 'R'},
@@ -88,21 +89,50 @@ void sopafacil(int& puntos)
         {'O', 'H', 'G', 'J', 'P', 'N', 'M', 'B'}
     };
 
-	for (int i = 0; i < 8; ++i) 
+    char sopafacil2[8][8] =
     {
-        for (int j = 0; j < 8; ++j) 
+        {'D', 'E', 'A', 'D', 'P', 'O', 'O', 'L'},
+        {'S', 'W', 'F', 'B', 'I', 'T', 'M', 'A'},
+        {'T', 'H', 'A', 'L', 'R', 'W', 'O', 'R'},
+        {'O', 'N', 'L', 'R', 'O', 'B', 'I', 'N'},
+        {'R', 'A', 'C', 'F', 'N', 'W', 'L', 'H'},
+        {'M', 'D', 'O', 'A', 'M', 'P', 'O', 'O'},
+        {'H', 'F', 'N', 'I', 'A', 'C', 'R', 'A'},
+        {'V', 'I', 'S', 'I', 'O', 'N', 'P', 'A'}
+    };
+
+    srand(time(nullptr));
+    int sopa = rand() % 2;
+
+    if(sopa == 0)
+    {
+        for (int i = 0; i < 8; ++i) 
         {
-            cout << sopafacil[i][j] << ' ';
+            for (int j = 0; j < 8; ++j) 
+            {
+                cout << sopafacil1[i][j] << ' ';
+            }
+            cout << endl;
         }
-        cout << endl;
+    }
+    else
+    {
+        for (int i = 0; i < 8; ++i) 
+        {
+            for (int j = 0; j < 8; ++j) 
+            {
+                cout << sopafacil2[i][j] << ' ';
+            }
+            cout << endl;
+        }
     }
 
 	string palabra;
-    cout << "Ingrese la palabra encontrada (o 'salir' para terminar): ";
+    cout << "Ingrese la palabra encontrada (o 'SALIR' para terminar): ";
     while (true) 
     {
         cin >> palabra;
-        if (palabra == "salir") 
+        if (palabra == "SALIR") 
         {
            break;
         }
@@ -131,6 +161,7 @@ void sopafacil(int& puntos)
 
 void sopamedia(int& puntos)
 {
+    cout << "Tematica: Partes de la computadora\n";
 	string palabras_medio[] = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "TECLADO", "MONITOR","SSD"};
 
 	const string* palabras;
@@ -163,11 +194,11 @@ void sopamedia(int& puntos)
     }
 
 	string palabra;
-	cout << "Ingrese la palabra encontrada (o 'salir' para terminar): ";
+	cout << "Ingrese la palabra encontrada (o 'SALIR' para terminar): ";
     while (true) 
     {
         cin >> palabra;
-        if (palabra == "salir") 
+        if (palabra == "SALIR") 
         {
             break;
         }
@@ -211,7 +242,7 @@ void sopadificil(int& puntos)
         {'D', 'M', 'V', 'S', 'K', 'H', 'B', 'X', 'J', 'Q', 'G', 'R'},
         {'Y', 'G', 'Q', 'M', 'I', 'I', 'P', 'P', 'E', 'T', 'W', '7'},
         {'B', 'Z', 'T', 'B', 'E', 'W', 'C', 'G', 'H', 'A', 'U', 'D'},
-        {'A', 'F', 'L', 'I', 'W', 'A', 'N', 'D', 'O', 'S', 'K', 'I'},
+        {'A', 'F', 'L', 'E', 'W', 'A', 'N', 'D', 'O', 'S', 'K', 'I'},
         {'L', 'M', 'B', 'A', 'P', 'P', 'E', 'D', 'E', 'M', 'S', 'C'},
         {'A', 'X', 'I', 'J', 'C', 'D', 'A', 'M', 'W', 'F', 'G', 'K'},
         {'Q', 'S', 'G', 'R', 'O', 'V', 'N', 'P', 'H', 'E', 'U', 'A'}
@@ -227,11 +258,11 @@ void sopadificil(int& puntos)
         }
 
 	string palabra;
-   	cout << "Ingrese la palabra encontrada (o 'salir' para terminar): ";
+   	cout << "Ingrese la palabra encontrada (o 'SALIR' para terminar): ";
     while (true) 
     {
         cin >> palabra;
-        if (palabra == "salir") 
+        if (palabra == "SALIR") 
         {
             break;
         }
@@ -256,11 +287,6 @@ void sopadificil(int& puntos)
         cout << "Ingrese otra palabra encontrada (o 'salir' para terminar): ";
     }
 }
-
-
-
-
-
 
 void actualizar_puntos(Usuario usuarios[], int num_usuarios, const string& nombre, int puntos)
 {
