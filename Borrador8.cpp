@@ -155,7 +155,7 @@ void sopafacil(int& puntos)
         }
 
         cout << "Puntos actuales: " << puntos << endl;
-        cout << "Ingrese otra palabra encontrada (o 'salir' para terminar): ";
+        cout << "Ingrese otra palabra encontrada (o 'SALIR' para terminar): ";
     }
 }
 
@@ -170,7 +170,7 @@ void sopamedia(int& puntos)
 
 	palabras = palabras_medio;
     num_palabras = 6;
-    char sopamedio[10][10] = 
+    char sopamedio1[10][10] = 
     {
         {'P', 'L', 'A', 'C', 'A', 'B', 'A', 'S', 'E', 'P'},
         {'C', 'B', 'T', 'Q', 'K', 'Z', 'O', 'P', 'F', 'R'},
@@ -184,13 +184,45 @@ void sopamedia(int& puntos)
         {'H', 'T', 'E', 'P', 'I', 'A', 'G', 'C', 'X', 'R'}
     };
 
-    for (int i = 0; i < 10; ++i) 
+    char sopamedio2[10][10] =
     {
-        for (int j = 0; j < 10; ++j) 
+        {'N', 'A', 'R', 'M', 'T', 'O', 'A', 'S', 'E', 'B'},
+        {'F', 'I', 'C', 'P', 'U', 'O', 'R', 'C', 'E', 'L'},
+        {'U', 'J', 'T', 'E', 'Y', 'L', 'P', 'D', 'O', 'U'},
+        {'E', 'O', 'A', 'C', 'A', 'B', 'L', 'E', 'S', 'E'},
+        {'N', 'G', 'S', 'S', 'M', 'V', 'H', 'H', 'I', 'L'},
+        {'T', 'I', 'Y', 'D', 'T', 'Q', 'P', 'E', 'S', 'B'},
+        {'E', 'R', 'E', 'T', 'U', 'O', 'R', 'T', 'P', 'I'},
+        {'C', 'O', 'F', 'Q', 'H', 'D', 'V', 'T', 'T', 'O'},
+        {'H', 'E', 'C', 'M', 'O', 'U', 'S', 'E', 'K', 'S'},
+        {'H', 'O', 'N', 'E', 'P', 'I', 'E', 'C', 'E', 'R'}
+
+    };
+
+    srand(time(nullptr));
+    int sopa = rand() % 2;
+
+    if(sopa == 0)
+    {
+        for (int i = 0; i < 10; ++i) 
         {
-            cout << sopamedio[i][j] << ' ';
+            for (int j = 0; j < 10; ++j) 
+            {
+                cout << sopamedio1[i][j] << ' ';
+            }
+            cout << endl;
         }
-        cout << endl;
+    }
+    else
+    {
+        for (int i = 0; i < 10; ++i) 
+        {
+            for (int j = 0; j < 10; ++j) 
+            {
+                cout << sopamedio2[i][j] << ' ';
+            }
+            cout << endl;
+        }
     }
 
 	string palabra;
@@ -220,7 +252,7 @@ void sopamedia(int& puntos)
         }
 
         cout << "Puntos actuales: " << puntos << endl;
-        cout << "Ingrese otra palabra encontrada (o 'salir' para terminar): ";
+        cout << "Ingrese otra palabra encontrada (o 'SALIR' para terminar): ";
     }
 }
 
@@ -234,7 +266,7 @@ void sopadificil(int& puntos)
 
 	palabras = palabras_dificil;
     num_palabras = 6;
-    char sopadificil[12][12] =
+    char sopadificil1[12][12] =
     {
         {'M', 'W', 'H', 'G', 'O', 'N', 'E', 'A', 'B', 'S', 'M', 'F'},
         {'J', 'E', 'R', 'T', 'Z', 'Q', 'V', 'U', 'P', 'X', 'I', 'K'},
@@ -248,14 +280,47 @@ void sopadificil(int& puntos)
         {'Q', 'S', 'G', 'R', 'O', 'V', 'N', 'P', 'H', 'E', 'U', 'A'}
     };
 
+    char sopadificil2[12][12] =
+    {
+        {'A', 'E', 'G', 'O', 'N', 'Y', 'E', 'S', 'A', 'Q', 'T', 'G'},
+        {'E', 'N', 'E', 'F', 'U', 'T', 'B', 'O', 'L', 'O', 'A', 'Q'},
+        {'P', 'O', 'I', 'M', 'A', 'R', 'C', 'H', 'A', 'M', 'A', 'E'},
+        {'O', 'S', 'L', 'T', 'A', 'A', 'P', 'E', 'I', 'M', 'A', 'T'},
+        {'R', 'T', 'R', 'B', 'S', 'P', 'T', 'N', 'R', 'A', 'O', 'E'},
+        {'T', 'C', 'N', 'O', 'C', 'A', 'T', 'U', 'A', 'O', 'S', 'N'},
+        {'A', 'R', 'C', 'I', 'C', 'L', 'I', 'S', 'M', 'O', 'A', 'I'},
+        {'B', 'A', 'L', 'O', 'N', 'C', 'E', 'S', 'T', 'O', 'E', 'S'},
+        {'A', 'J', 'O', 'P', 'O', 'T', 'C', 'A', 'S', 'I', 'O', 'N'},
+        {'O', 'L', 'I', 'M', 'P', 'I', 'A', 'D', 'A', 'S', 'M', 'I'},
+        {'R', 'O', 'E', 'S', 'Q', 'U', 'I', 'A', 'R', 'Q', 'R', 'O'},
+        {'S', 'O', 'E', 'N', 'T', 'R', 'E', 'N', 'A', 'D', 'O', 'R'}
+    };
+
+    srand(time(nullptr));
+    int sopa = rand() % 2;
+
+    if(sopa == 0)
+    {
         for (int i = 0; i < 12; ++i) 
         {
             for (int j = 0; j < 12; ++j) 
             {
-                cout << sopadificil[i][j] << ' ';
+                cout << sopadificil1[i][j] << ' ';
             }
             cout << endl;
         }
+    }
+    else
+    {
+        for (int i = 0; i < 12; ++i) 
+        {
+            for (int j = 0; j < 12; ++j) 
+            {
+                cout << sopadificil2[i][j] << ' ';
+            }
+            cout << endl;
+        }
+    }
 
 	string palabra;
    	cout << "Ingrese la palabra encontrada (o 'SALIR' para terminar): ";
@@ -284,7 +349,7 @@ void sopadificil(int& puntos)
         }
 
         cout << "Puntos actuales: " << puntos << endl;
-        cout << "Ingrese otra palabra encontrada (o 'salir' para terminar): ";
+        cout << "Ingrese otra palabra encontrada (o 'SALIR' para terminar): ";
     }
 }
 
