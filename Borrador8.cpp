@@ -457,6 +457,10 @@ int main()
                     sopadificil(puntos);
                     actualizar_puntos(usuarios, num_usuarios, nombre_usuario, puntos);
                 }
+                else
+                {
+                    cout << "Esa no es una opcion";
+                }
                 break;
             }
             case 4:
