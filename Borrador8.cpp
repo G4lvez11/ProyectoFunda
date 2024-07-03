@@ -161,8 +161,7 @@ void sopafacil(int& puntos)
 
 void sopamedia(int& puntos)
 {
-    cout << "Tematica: Partes de la computadora\n";
-	string palabras_medio[] = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "TECLADO", "MONITOR","SSD"};
+	string palabras_medio[] = {"PROCESADOR", "PLACABASE", "MEMORIARAM", "TECLADO", "MONITOR", "SSD", "CPU", "MOUSE", "BIOS", "CABLES", "FUENTE", "ROUTER"};
 
 	const string* palabras;
     int num_palabras;
@@ -258,7 +257,7 @@ void sopamedia(int& puntos)
 
 void sopadificil(int& puntos)
 {
-	string palabras_dificil[] = {"CR7", "MESSI", "NEYMAR", "LEWANDOWSKI", "MBAPPE", "DYBALA"};
+	string palabras_dificil[] = {"CR7", "MESSI", "NEYMAR", "LEWANDOWSKI", "MBAPPE", "DYBALA", "TENIS", "ESQUIAR", "FUTBOL", "MARATON", "OLIMPIADAS", "ATLETISMO"};
 	
 	const string* palabras;
     int num_palabras;
@@ -288,12 +287,12 @@ void sopadificil(int& puntos)
         {'O', 'S', 'L', 'T', 'A', 'A', 'P', 'E', 'I', 'M', 'A', 'T'},
         {'R', 'T', 'R', 'B', 'S', 'P', 'T', 'N', 'R', 'A', 'O', 'E'},
         {'T', 'C', 'N', 'O', 'C', 'A', 'T', 'U', 'A', 'O', 'S', 'N'},
-        {'A', 'R', 'C', 'I', 'C', 'L', 'I', 'S', 'M', 'O', 'A', 'I'},
-        {'B', 'A', 'L', 'O', 'N', 'C', 'E', 'S', 'T', 'O', 'E', 'S'},
+        {'A', 'R', 'C', 'I', 'C', 'L', 'A', 'S', 'M', 'O', 'A', 'I'},
+        {'B', 'A', 'L', 'O', 'M', 'C', 'E', 'S', 'T', 'O', 'E', 'S'},
         {'A', 'J', 'O', 'P', 'O', 'T', 'C', 'A', 'S', 'I', 'O', 'N'},
         {'O', 'L', 'I', 'M', 'P', 'I', 'A', 'D', 'A', 'S', 'M', 'I'},
         {'R', 'O', 'E', 'S', 'Q', 'U', 'I', 'A', 'R', 'Q', 'R', 'O'},
-        {'S', 'O', 'E', 'N', 'T', 'R', 'E', 'N', 'A', 'D', 'O', 'R'}
+        {'S', 'O', 'E', 'N', 'T', 'R', 'O', 'N', 'A', 'D', 'O', 'R'}
     };
 
     srand(time(nullptr));
@@ -442,16 +441,19 @@ int main()
                 int puntos = 0;
                 if(dificultad == 1)
                 {
+                    cout << "Tematica: superheroes\n";
                     sopafacil(puntos);
                     actualizar_puntos(usuarios, num_usuarios, nombre_usuario, puntos);
                 }
                 else if( dificultad == 2)
                 {
+                    cout << "Tematica: partes de la computadora\n";
                     sopamedia(puntos);
                     actualizar_puntos(usuarios, num_usuarios, nombre_usuario, puntos);
                 }
                 else if(dificultad == 3)
                 {
+                    cout << "Tematica: Deportes\n";
                     sopadificil(puntos);
                     actualizar_puntos(usuarios, num_usuarios, nombre_usuario, puntos);
                 }
