@@ -2,7 +2,7 @@
 #include <string>
 #include <unistd.h>
 #include <ctime>
-#include<cstdlib>
+#include <cstdlib>
 using namespace std;
 
 const int max_usuarios = 5;
