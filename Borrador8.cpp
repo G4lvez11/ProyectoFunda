@@ -402,7 +402,7 @@ int main()
         cout << "2) Ranking\n";
         cout << "3) Jugar\n";
         cout << "4) Instrucciones\n";
-        cout << "5) Nombres\n";
+        cout << "5) Participantes\n";
         cout << "6) Salir\n";
         cout << "Elige una opcion: ";
         cin >> menu;
@@ -411,15 +411,18 @@ int main()
         {
             case 1:
             {
-                cout << "Ingrese la cantidad de usuarios: ";
+                cout << "Ingrese la cantidad de usuarios del 1 al 5: ";
                 cin >> num_usuarios;
-                if (num_usuarios > max_usuarios) 
+                if (num_usuarios > max_usuarios || num_usuarios == 0) 
                 {
-                    cout << "Numero de usuarios excede el maximo permitido.\n";
-                    num_usuarios = max_usuarios;
+                    cout << "Esa opcion no es valida\n";
+                    break;
                 }
-                usuario_guardado(usuarios, num_usuarios);
-                break;
+                else
+                {
+                    usuario_guardado(usuarios, num_usuarios);
+                    break;
+                }
             }
             case 2:
             {
